@@ -1,11 +1,14 @@
 import React from 'react';
+import {Provider} from 'react-redux'
 import { StyleSheet, Text, View } from 'react-native';
+import Login from './src/screens/Login';
+import store from './src/store/store';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <Provider store={store}>
+      <Login />
+    </Provider>
   );
 }
 
