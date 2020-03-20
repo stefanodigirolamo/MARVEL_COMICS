@@ -1,10 +1,6 @@
 import {StyleSheet} from 'react-native'
 
 const loginStyle = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#3e3e3e',
-    },
     logo: {
       height: 80,
       width: 80,
@@ -25,14 +21,15 @@ const loginStyle = StyleSheet.create({
       fontSize: 13,
       textAlign: 'center',
     },
-    form: {
-      marginTop: 40,
-      marginHorizontal: 30,
+    inputContainer: {
+      marginVertical: '5%',
     },
     inputTitle: {
       fontSize: 10,
       textTransform: 'uppercase',
       color: '#fefefe',
+      marginHorizontal: '10%',
+      paddingVertical: '5%'
     },
     input: {
       borderBottomColor: '#fefefe',
@@ -41,27 +38,7 @@ const loginStyle = StyleSheet.create({
       fontSize: 15,
       color: '#fefefe',
       marginTop: 10,
-    },
-    button: {
-      marginHorizontal: 53,
-      marginTop: 10,
-      backgroundColor: '#c9082a',
-      borderRadius: 5,
-      height: 40,
-      justifyContent: 'center',
-    },
-    buttonText: {
-      fontWeight: '600',
-      fontSize: 15,
-      color: '#fefefe',
-      textAlign: 'center',
-    },
-    greeting: {
-      fontSize: 25,
-      color: '#fefefe',
-      fontWeight: '600',
-      textAlign: 'center',
-      marginTop: 100,
+      marginHorizontal: '10%'
     },
   });
 

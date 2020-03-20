@@ -1,14 +1,39 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { connect } from "react-redux";
+import { View, Text, Button, SafeAreaView } from "react-native";
+import * as firebase from "firebase";
+import { getUserLoggedOutAction } from "../../store/actions/userActions/userActions";
+import cartStyle from "./cartStyles";
+import { NavigationStackProp } from "react-navigation-stack";
 
-type CartProps = {};
+type CartProps = {
+  navigation: NavigationStackProp;
+  getUserLoggedOut: typeof getUserLoggedOutAction;
+};
 
-const Cart: React.FC<CartProps> = () => {
+const Cart: React.FC<CartProps> = ({ navigation, getUserLoggedOut }) => {
+  const styles = cartStyle;
+
+  const signOutUser = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(getUserLoggedOut)
+      .then(navigation.navigate("Auth"));
+  };
+
   return (
-    <View>
+    <SafeAreaView>
       <Text>Cart</Text>
-    </View>
+      <Button title="Sign Out" onPress={signOutUser} color="#000000" />
+    </SafeAreaView>
   );
 };
 
-export default Cart
+const mapDispatchToProps = dispatch => ({
+  getUserLoggedOut: () => {
+    dispatch(getUserLoggedOutAction());
+  }
+});
+
+export default connect(null, mapDispatchToProps)(Cart);

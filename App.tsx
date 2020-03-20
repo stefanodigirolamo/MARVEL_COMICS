@@ -7,10 +7,10 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import Login from "./src/screens/auth/login/Login";
 import store from "./src/store/store";
-import NewReleases from "./src/screens/newReleases/NewReleases";
+import Releases from "./src/screens/releases/Releases";
 import Cart from "./src/screens/cart/Cart";
 import Characters from "./src/screens/characters/Characters";
-import Register from "./src/screens/auth/Register";
+import Registration from "./src/screens/auth/registration/Registration";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBpeX_EvrdMmsfocQFH84PIPy0OfnkqBTI",
@@ -30,17 +30,17 @@ const AuthStack = createStackNavigator(
     Login: {
       screen: Login
     },
-    Register: {
-      screen: Register
+    Registration: {
+      screen: Registration
     }
   },
   { headerMode: "none", initialRouteName: "Login" }
 );
 
-const NewReleasesStack = createStackNavigator(
+const ReleasesStack = createStackNavigator(
   {
-    NewReleases: {
-      screen: NewReleases,
+    Releases: {
+      screen: Releases,
       navigationOptions: () => ({
         cardStyle: {
           backgroundColor: "#000000"
@@ -68,7 +68,7 @@ const CartStack = createStackNavigator(
 const getTabBarIcon = (navigation, focused, tintColor) => {
   const { routeName } = navigation.state;
   switch (routeName) {
-    case "New Realeses":
+    case "Releases":
       return <Icon name="home" size={30} color={tintColor} />;
     case "Characters":
       return <Icon name="magnify" size={30} color={tintColor} />;
@@ -81,7 +81,7 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
 
 const tabNavigator = createBottomTabNavigator(
   {
-    NewReleases: NewReleasesStack,
+    Releases: ReleasesStack,
     Characters: CharactersStack,
     Cart: CartStack
   },
@@ -99,7 +99,7 @@ const tabNavigator = createBottomTabNavigator(
       }
     },
     resetOnBlur: true,
-    initialRouteName: "NewReleases"
+    initialRouteName: "Releases"
   }
 );
 
